@@ -22,6 +22,11 @@
   font-size: large;
 }
 
+input[type='text'] {
+  width: 100px;
+  height: 25px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -38,6 +43,7 @@
 .calculator {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .table-wrapper {
   display: flex;

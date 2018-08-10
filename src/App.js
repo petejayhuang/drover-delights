@@ -16,14 +16,10 @@ class App extends Component {
     const commission = this.state.monthlyPrice * this.state.duration * 0.15
     let result = ''
     if (commission < 500) {
-      result = 'standard perks'
-    }
-
-    if (commission < 1000) {
       result = 'plus perks'
     }
 
-    if (commission > 1000) {
+    if (commission > 500) {
       result = 'premium perks'
     }
     return result
@@ -54,7 +50,7 @@ class App extends Component {
             type="text"
             value={this.state.monthlyPrice}
           />
-          <strong>
+          <strong className="mt-5">
             <label>Total Months</label>
           </strong>
           <input
@@ -62,11 +58,11 @@ class App extends Component {
             type="text"
             value={this.state.duration}
           />
-          <strong>
+          <strong className="mt-5">
             <label>Total Value: </label>
           </strong>
           £{total}
-          <strong>
+          <strong className="mt-5">
             <label>Commission: </label>
           </strong>
           £{commission}
@@ -75,16 +71,26 @@ class App extends Component {
           Great! They're eligible for <strong>{this.renderPerks()}</strong>
         </h1>
 
-        <h2>Standard</h2>
-        <p>Drover branded delivery box</p>
-        <p>Drover branded keychain</p>
-        <p>Drover branded sweets</p>
-        <p>Aux cable/usb charger</p>
-        <p>Fuel card</p>
-
-        <h2>Plus</h2>
-
-        <h2>Premium</h2>
+        {commission < 500 && (
+          <div>
+            <h2>Plus</h2>
+            <p>Drover branded delivery box</p>
+            <p>Drover branded keychain</p>
+            <p>Drover branded sweets</p>
+            <p>Aux cable/usb charger</p>
+            <p>Fuel card</p>
+          </div>
+        )}
+        {commission > 500 && (
+          <div>
+            <h2>Premium</h2>
+            <p>Luxury Drover branded delivery box</p>
+            <p>Personalised Drover keychain</p>
+            <p>Hard-case key box</p>
+            <p>Key locator</p>
+            <p>Phone holder</p>
+          </div>
+        )}
       </div>
     )
   }
